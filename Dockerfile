@@ -1,1 +1,1 @@
-FROM yandex/clickhouse-server:21.2.2.8
+FROM yandex/clickhouse-server:21.2.3.15
