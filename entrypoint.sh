@@ -5,7 +5,7 @@ set -eo pipefail
 CLICKHOUSE_UID="${CLICKHOUSE_UID:-"$(id -u clickhouse)"}"
 CLICKHOUSE_GID="${CLICKHOUSE_GID:-"$(id -g clickhouse)"}"
 
-gosu="gosu $USER:$GROUP"
+gosu="gosu $CLICKHOUSE_UID:$CLICKHOUSE_GID"
 
 CLICKHOUSE_CONFIG="${CLICKHOUSE_CONFIG:-/etc/clickhouse-server/config.xml}"
 
