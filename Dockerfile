@@ -1,4 +1,4 @@
-FROM yandex/clickhouse-server:21.7.2.7
+FROM yandex/clickhouse-server:21.7.3.14
 
 COPY entrypoint.sh /entrypoint.sh
 
