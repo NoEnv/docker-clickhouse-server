@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch: [ amd64 ]
+        arch: [ amd64, arm64 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -71,11 +71,13 @@ jobs:
       - name: Import images
         run: |
           podman load -i ./image-amd64/image.tar
+          podman load -i ./image-arm64/image.tar
 
       - name: Create multi-arch manifest
         run: |
           buildah manifest create ${{ env.IMAGE_NAME }}:latest
           buildah manifest add --arch amd64 ${{ env.IMAGE_NAME }}:latest ${{ env.IMAGE_NAME }}:amd64
+          buildah manifest add --arch arm64 --variant v8 ${{ env.IMAGE_NAME }}:latest ${{ env.IMAGE_NAME }}:arm64
 
       - name: Push unstable images
         if: ${{ github.event_name == 'push' }}
