@@ -1,4 +1,4 @@
-FROM clickhouse/clickhouse-server:23.9.1.1854-alpine
+FROM clickhouse/clickhouse-server:23.9.2.56-alpine
 
 COPY entrypoint.sh /entrypoint.sh
 
